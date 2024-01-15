@@ -7,9 +7,18 @@ dataSources:
   - kind: ethereum
     network: sepolia
     event:
-      - address: '0xa60ecf32309539dd84f27a9563754dca818b815e'
+      - address: '0x41097cd4925848d43221dd5e6eb2191c1c27c0f0'
         events: 
-          - "Sync(uint112,uint112)"
+          - "Add(uint256,uint256)"
+          - "Sub(uint256,uint256)"
+          - "Mul(uint256,uint256)"
+          - "Div(uint256,uint256)"
+          - "Mod(uint256,uint256)"
+          - "Min(uint256,uint256)"
+          - "Max(uint256,uint256)"
+          - "Sqrt(uint256)"
+
+          
 
 mapping:
   language: wasm/assemblyscript
