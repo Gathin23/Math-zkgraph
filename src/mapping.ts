@@ -32,6 +32,8 @@ export function handleBlocks(blocks: Block[]): Bytes {
   let events: Event[] = blocks[0].events;
 
   let calculated: BigInt = BigInt.zero();
+  let calculatedWithFunctionHash: Bytes = Bytes.fromHexString("0x");
+
 
   // Add 2 numbers
   let eventsByAcctEsigAdd: Event[] = blocks[0]
@@ -141,13 +143,14 @@ export function handleBlocks(blocks: Block[]): Bytes {
       const destinationFunction = "0xa444f5e9".concat(calculated.toHex());
 
       // append the calculated value with the destination function hash
-      const calculatedWithFunctionHash = Bytes.fromHexString(
+      calculatedWithFunctionHash = Bytes.fromHexString(
         destinationFunction.concat(calculated.toHex())
       );
 
-      return calculatedWithFunctionHash;
+      
     }
   }
+  return calculatedWithFunctionHash;
 
   function add(a: Bytes, b: Bytes): BigInt {
     let aI = BigInt.fromBytes(a);
