@@ -2,7 +2,7 @@
 import { BigInt, require } from "@hyperoracle/zkgraph-lib";
 import { Bytes, Block, Event } from "@hyperoracle/zkgraph-lib";
 
-let addr = Bytes.fromHexString("0x41097cd4925848d43221dd5e6eb2191c1c27c0f0");
+let addr = Bytes.fromHexString("0xbbd00920fb47570db9ee9aae0541c3c65869310d");
 let esig_add = Bytes.fromHexString(
   "0x7afbe4f1c55b5f72ea356f5b4d5615831867af31454a5ca5557f315e6d11a369"
 );
