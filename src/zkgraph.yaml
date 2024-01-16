@@ -1,8 +1,8 @@
 specVersion: 0.0.2
 apiVersion: 0.0.2
-name: eg_event
-description: "This demo zkGraph shows 3 ways to access / filter out source events."
-repository: https://github.com/hyperoracle/zkgraph
+name: math_zkgraph
+description: "Contains all basic math functions for off-chain computation using zkgraph"
+repository: https://github.com/Gathin23/Math-zkgraph
 dataSources:
   - kind: ethereum
     network: sepolia
