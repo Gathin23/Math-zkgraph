@@ -42,8 +42,8 @@ export function handleBlocks(blocks: Block[]): Bytes {
 
   if (eventsByAcctEsigAdd.length > 0) {
     calculated = add(
-      eventsByAcctEsigAdd[0].topic1,
-      eventsByAcctEsigAdd[1].topic2
+      eventsByAcctEsigAdd[0].data.slice(0, 32),
+      eventsByAcctEsigAdd[0].data.slice(32, 64)
     );
   }
 
@@ -140,17 +140,20 @@ export function handleBlocks(blocks: Block[]): Bytes {
         events[i].esig == esig_max ||
         events[i].esig == esig_sqrt)
     ) {
-      const destinationFunction = "0xa444f5e9".concat(calculated.toHex());
+      const destinationFunction = "0xa444f5e9";
 
-      // append the calculated value with the destination function hash
+      //0xa444f5e90000000000000000000000000000000000000000000000000000000000000004
+      
       calculatedWithFunctionHash = Bytes.fromHexString(
-        destinationFunction.concat(calculated.toHex())
+        destinationFunction + calculated.toHexString()
       );
+      
 
       
     }
   }
   return calculatedWithFunctionHash;
+}
 
   function add(a: Bytes, b: Bytes): BigInt {
     let aI = BigInt.fromBytes(a);
@@ -206,4 +209,3 @@ export function handleBlocks(blocks: Block[]): Bytes {
 
     return aI.sqrt();
   }
-}
