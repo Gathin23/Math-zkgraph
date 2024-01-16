@@ -2,7 +2,7 @@
 import { BigInt, require } from "@hyperoracle/zkgraph-lib";
 import { Bytes, Block, Event } from "@hyperoracle/zkgraph-lib";
 
-let addr = Bytes.fromHexString("0x41097cd4925848d43221dd5e6eb2191c1c27c0f0");
+let addr = Bytes.fromHexString("0xdad4c2936bfce1248966d0a32ce25598bc23725c");
 let esig_add = Bytes.fromHexString(
   "0x7afbe4f1c55b5f72ea356f5b4d5615831867af31454a5ca5557f315e6d11a369"
 );
@@ -42,8 +42,8 @@ export function handleBlocks(blocks: Block[]): Bytes {
 
   if (eventsByAcctEsigAdd.length > 0) {
     calculated = add(
-      eventsByAcctEsigAdd[0].data.slice(0, 32),
-      eventsByAcctEsigAdd[0].data.slice(32, 64)
+      eventsByAcctEsigAdd[0].topic1,
+      eventsByAcctEsigAdd[0].topic2
     );
   }
 
@@ -55,7 +55,7 @@ export function handleBlocks(blocks: Block[]): Bytes {
   if (eventsByAcctEsigSub.length > 0) {
     calculated = sub(
       eventsByAcctEsigSub[0].topic1,
-      eventsByAcctEsigSub[1].topic2
+      eventsByAcctEsigSub[0].topic2
     );
   }
 
@@ -67,7 +67,7 @@ export function handleBlocks(blocks: Block[]): Bytes {
   if (eventsByAcctEsigMul.length > 0) {
     calculated = mul(
       eventsByAcctEsigMul[0].topic1,
-      eventsByAcctEsigMul[1].topic2
+      eventsByAcctEsigMul[0].topic2
     );
   }
 
@@ -79,7 +79,7 @@ export function handleBlocks(blocks: Block[]): Bytes {
   if (eventsByAcctEsigDiv.length > 0) {
     calculated = div(
       eventsByAcctEsigDiv[0].topic1,
-      eventsByAcctEsigDiv[1].topic2
+      eventsByAcctEsigDiv[0].topic2
     );
   }
 
@@ -91,7 +91,7 @@ export function handleBlocks(blocks: Block[]): Bytes {
   if (eventsByAcctEsigMod.length > 0) {
     calculated = mod(
       eventsByAcctEsigMod[0].topic1,
-      eventsByAcctEsigMod[1].topic2
+      eventsByAcctEsigMod[0].topic2
     );
   }
 
@@ -103,7 +103,7 @@ export function handleBlocks(blocks: Block[]): Bytes {
   if (eventsByAcctEsigMin.length > 0) {
     calculated = min(
       eventsByAcctEsigMin[0].topic1,
-      eventsByAcctEsigMin[1].topic2
+      eventsByAcctEsigMin[0].topic2
     );
   }
 
@@ -115,7 +115,7 @@ export function handleBlocks(blocks: Block[]): Bytes {
   if (eventsByAcctEsigMax.length > 0) {
     calculated = max(
       eventsByAcctEsigMax[0].topic1,
-      eventsByAcctEsigMax[1].topic2
+      eventsByAcctEsigMax[0].topic2
     );
   }
 
@@ -142,14 +142,11 @@ export function handleBlocks(blocks: Block[]): Bytes {
     ) {
       const destinationFunction = "0xa444f5e9";
 
-      //0xa444f5e90000000000000000000000000000000000000000000000000000000000000004
-      
+      // merging the function hash with the calculated value to create calldata
       calculatedWithFunctionHash = Bytes.fromHexString(
-        destinationFunction + calculated.toHexString()
+        destinationFunction + calculated.toHexString().padStart(64, "0")
       );
-      
 
-      
     }
   }
   return calculatedWithFunctionHash;
