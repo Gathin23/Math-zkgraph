@@ -1,4 +1,6 @@
-# zkGraph default template
+# Math utils zkgraph
+
+## This zkgraph contains all the basic math utitlities for calculation
 
 
 ## Usage CLI
