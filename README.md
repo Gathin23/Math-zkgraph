@@ -2,6 +2,10 @@
 
 ## This zkgraph contains all the basic math utitlities for calculation
 
+#### Deployed address on Sepolia Testnet: 0xdad4c2936bfce1248966d0a32ce25598bc23725c
+
+#### Published Transaction Hash: 0xdad4c2936bfce1248966d0a32ce25598bc23725c
+
 
 ## Usage CLI
 
