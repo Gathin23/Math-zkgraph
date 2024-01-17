@@ -1,6 +1,6 @@
-# Math utils zkgraph
+# Math-utilities zkgraph
 
-## This zkgraph contains all the basic math utitlities for calculation
+## This zkgraph helps offload the basic math operations offchain and gives the mechanism to prove the offline calculated values
 
 #### Deployed address on Sepolia Testnet: 0xdad4c2936bfce1248966d0a32ce25598bc23725c
 
