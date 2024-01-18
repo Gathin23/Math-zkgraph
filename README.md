@@ -4,7 +4,7 @@
 
 #### Deployed address on Sepolia Testnet: 0xdad4c2936bfce1248966d0a32ce25598bc23725c
 
-#### Published Transaction Hash: 0xdad4c2936bfce1248966d0a32ce25598bc23725c
+#### Published Transaction Hash: 0x843472a69c99fc37e18e48b2da4b63b459e57d32170beb19b15e99a76adf2f8d
 
 
 ## Usage CLI
